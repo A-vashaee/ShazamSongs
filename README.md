@@ -8,3 +8,5 @@ Here we have a simple project to get your shazamed songs and try to find them (i
 5.find each song on YouTube
 6.return the list of links.
 7.further processes with the links if needed. ;)
+8.make a playlist name "user-shazam-songs"
+9.add links to playlist on youtube
