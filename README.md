@@ -1,7 +1,10 @@
 # ShazamSongs
 
-Here we have a simple project to get your shazamed songs from the website and try to download the songs(if possible).
+Here we have a simple project to get your shazamed songs and try to find them (if possible) on YouTube.
 
-1.first we need to creat a platform so that it can download the dataset.
-2.second we need to code so that the program iterate each song and try if it can find it in order to dl it.
-3.
+1.first we need to gather the data from Shazam (either website or the app).
+2.installing the required pakages.
+3.preprocess the data.
+5.find each song on YouTube
+6.return the list of links.
+7.further processes with the links if needed. ;)
