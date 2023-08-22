@@ -41,7 +41,7 @@ final_df = final_df.drop_duplicates()
 
 # two functions that creat search for youtube links and put them in a list
 # Replace 'YOUR_API_KEY' with your actual YouTube Data API key
-API_KEY = 'AIzaSyCPpvWr49X1uE0AMiPmQfx0q3M1WRE0-f0'
+API_KEY = 'api'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
