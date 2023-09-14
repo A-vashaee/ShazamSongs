@@ -1,6 +1,7 @@
 
 # pip install google-api-python-client
 # pip install pytube
+# pip install python-dotenv
 
 import pandas as pd
 import numpy as np
@@ -9,6 +10,7 @@ import tkinter as tk
 from tkinter import filedialog
 from pytube import YouTube
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
 
 root = tk.Tk()
 root.withdraw()  # Hide the main tkinter window
@@ -17,6 +19,8 @@ shazamlibrary = filedialog.askopenfile(title="Select the shazamlibrary csv file"
 df = pd.read_csv(shazamlibrary)
 
 # make a dataframe from original dataset
+# important to notice that first row are the titles so we should start the range from 1
+# NB: unfortunatly Youtube API key has 200 limits 
 # row_ite = range(1, len(df['Shazam Library']))
 row_ite = range(1, 50)
 new_data = []  
@@ -40,13 +44,15 @@ final_df = final_df.drop_duplicates()
 # final_df
 
 # two functions that creat search for youtube links and put them in a list
-# Replace 'YOUR_API_KEY' with your actual YouTube Data API key
-API_KEY = 'api'
+
+def configure():
+    load_dotenv()
+
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
 def search_youtube_link(song):
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=API_KEY)
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=os.getenv('API_KEY'))
     
     search_response = youtube.search().list(
         q=f"{song}",
@@ -69,5 +75,6 @@ def youtube_links(df):
         youtubeLinks.append(youtube_link)
     return youtubeLinks
 
+configure()
 links_list = youtube_links(final_df)
 links_list
